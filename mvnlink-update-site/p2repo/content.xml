@@ -2,7 +2,7 @@
 <?metadataRepository class='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'?>
 <repository name='file:/C:/dev/ws/mvnlink-update-site/p2repo - metadata' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
   <properties size='2'>
-    <property name='p2.timestamp' value='1207954772031'/>
+    <property name='p2.timestamp' value='1207955170031'/>
     <property name='p2.compressed' value='false'/>
   </properties>
   <units size='11'>
