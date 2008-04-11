@@ -1,4 +1,4 @@
-package mvnlink;
+package mvnlink.util;
 
 public class MavenProjectModel
 {

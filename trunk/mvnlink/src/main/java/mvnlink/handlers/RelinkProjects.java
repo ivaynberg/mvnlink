@@ -10,9 +10,11 @@ import java.util.Map;
 import java.util.Set;
 
 import mvnlink.Activator;
-import mvnlink.MavenPomParser;
-import mvnlink.MavenProjectModel;
-import mvnlink.PartialPath;
+import mvnlink.util.ChangeObserver;
+import mvnlink.util.LoggingChangeObserver;
+import mvnlink.util.MavenPomParser;
+import mvnlink.util.MavenProjectModel;
+import mvnlink.util.PartialPath;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -30,6 +32,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 
 /**
@@ -57,13 +60,15 @@ public class RelinkProjects extends AbstractHandler
 
         Map<PartialPath, IJavaProject> paths = findMavenProjects(projects);
 
+        LoggingChangeObserver observer = new LoggingChangeObserver();
+        observer.started();
         try
         {
             for (IJavaProject project : projects)
             {
                 try
                 {
-                    relinkClasspath(project, paths);
+                    relinkClasspath(project, paths, observer);
                 }
                 catch (JavaModelException e)
                 {
@@ -90,12 +95,14 @@ public class RelinkProjects extends AbstractHandler
 
             });
         }
+        observer.finished();
+        MessageDialog.openInformation(null, "MvnLink", observer.toString());
 
         return null;
     }
 
-    private void relinkClasspath(IJavaProject project, Map<PartialPath, IJavaProject> paths)
-            throws JavaModelException
+    private void relinkClasspath(IJavaProject project, Map<PartialPath, IJavaProject> paths,
+            ChangeObserver observer) throws JavaModelException
     {
         boolean modified = false;
         IClasspathEntry[] cpArray = project.getRawClasspath();
@@ -111,6 +118,7 @@ public class RelinkProjects extends AbstractHandler
             if (substitute != null)
             {
                 cp.set(i, JavaCore.newProjectEntry(substitute.getProject().getFullPath()));
+                observer.changed(project, e, substitute);
                 modified = true;
             }
         }
