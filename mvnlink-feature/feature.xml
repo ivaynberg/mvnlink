@@ -71,6 +71,7 @@ END OF TERMS AND CONDITIONS
    </license>
 
    <url>
+      <update label="MvnLink Update Site" url="http://mvnlink.googlecode.com/svn/mvnlink-update-site/"/>
       <discovery label="MvnLink Site" url="http://mvnlink.googlecode.com"/>
    </url>
 
@@ -78,7 +79,7 @@ END OF TERMS AND CONDITIONS
          id="mvnlink"
          download-size="0"
          install-size="0"
-         version="0.1.1"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
