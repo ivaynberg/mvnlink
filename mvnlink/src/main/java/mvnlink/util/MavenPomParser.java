@@ -1,4 +1,4 @@
-package mvnlink;
+package mvnlink.util;
 
 import java.io.IOException;
 import java.io.InputStream;
