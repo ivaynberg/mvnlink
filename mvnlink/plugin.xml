@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="MvnLink"
+            id="mvnlink.commands.category">
+      </category>
+      <command
+            name="Link Projects"
+            categoryId="mvnlink.commands.category"
+            id="mvnlink.commands.linkCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="mvnlink.commands.linkCommand"
+            class="mvnlink.handlers.RelinkProjects">
+      </handler>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="mvnlink.commands.linkCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   -->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="MvnLink"
+               mnemonic="M"
+               id="mvnlink.menus.sampleMenu">
+           <command
+                  commandId="mvnlink.commands.linkCommand"
+                  mnemonic="S"
+                  id="mvnlink.menus.sampleCommand">
+            </command>
+         </menu>
+      </menuContribution>
+<!--
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="mvnlink.toolbars.sampleToolbar">
+            <command
+                  commandId="mvnlink.commands.linkCommand"
+                  icon="icons/sample.gif"
+                  tooltip="Link maven projects"
+                  id="mvnlink.toolbars.sampleCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+-->
+   </extension>
+
+</plugin>
