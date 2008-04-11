@@ -2,7 +2,7 @@
 <?metadataRepository class='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'?>
 <repository name='file:/C:/dev/ws/mvnlink-update-site/p2repo - metadata' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
   <properties size='2'>
-    <property name='p2.timestamp' value='1207954050984'/>
+    <property name='p2.timestamp' value='1207954299531'/>
     <property name='p2.compressed' value='false'/>
   </properties>
   <units size='11'>
@@ -437,7 +437,6 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-SymbolicName: mvnlink; singleton:=true
 Manifest-Version: 1.0
 Bundle-Activator: mvnlink.Activator
-
           </instruction>
         </instructions>
       </touchpointData>
